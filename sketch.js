@@ -44,10 +44,14 @@ function drawOverlayGraphics() {
     for (let x = 0; x < overlayGraphics.width; x += 20) {
       // 從 capture 中取得對應位置的顏色
       let col = capture.get(x, y);
-      let gray = (red(col) + green(col) + blue(col)) / 3; // 計算灰階值
-      overlayGraphics.fill(gray); // 設定灰階顏色
+      let g = green(col); // 取得 G 通道值
+      overlayGraphics.fill(0, g, 100); // 設定方框顏色，R 為 0，B 為 100
       overlayGraphics.noStroke();
-      overlayGraphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形，中心點偏移 10
+      overlayGraphics.rect(x + 1, y + 1, 18, 18); // 繪製方框，稍微偏移以避免重疊
+
+      // 繪製中間的黑色圓
+      overlayGraphics.fill(0); // 黑色
+      overlayGraphics.ellipse(x + 10, y + 10, 5, 5); // 圓心位於方框中心
     }
   }
 }
