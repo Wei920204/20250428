@@ -33,7 +33,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   capture.size(windowWidth * 0.8, windowHeight * 0.8);
   overlayGraphics = createGraphics(capture.width, capture.height); // 重新調整 overlayGraphics
-  overlayGraphics.background(255, 0, 0, 100); // 半透明紅色背景
+  // overlayGraphics.background(255, 0, 0, 100); // 半透明紅色背景
   overlayGraphics.fill(255);
   overlayGraphics.textSize(32);
   overlayGraphics.textAlign(CENTER, CENTER);
