@@ -37,5 +37,5 @@ function windowResized() {
   overlayGraphics.fill(255);
   overlayGraphics.textSize(32);
   overlayGraphics.textAlign(CENTER, CENTER);
-  overlayGraphics.text('Overlay Text', overlayGraphics.width / 2, overlayGraphics.height / 2);
+  overlayGraphics.text('這是我的影像', overlayGraphics.width / 2, overlayGraphics.height / 2);
 }
