@@ -12,11 +12,7 @@ function setup() {
 
   // 建立與攝影機畫面相同大小的圖形緩衝區
   overlayGraphics = createGraphics(capture.width, capture.height);
-  // overlayGraphics.background(255, 0, 0, 100); // 半透明紅色背景
-  overlayGraphics.fill(255);
-  overlayGraphics.textSize(32);
-  overlayGraphics.textAlign(CENTER, CENTER);
-  overlayGraphics.text('這是我的影像', overlayGraphics.width / 2, overlayGraphics.height / 2);
+  drawOverlayGraphics();
 }
 
 function draw() {
@@ -33,9 +29,18 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   capture.size(windowWidth * 0.8, windowHeight * 0.8);
   overlayGraphics = createGraphics(capture.width, capture.height); // 重新調整 overlayGraphics
-  // overlayGraphics.background(255, 0, 0, 100); // 半透明紅色背景
-  overlayGraphics.fill(255);
-  overlayGraphics.textSize(32);
-  overlayGraphics.textAlign(CENTER, CENTER);
-  overlayGraphics.text('這是我的影像', overlayGraphics.width / 2, overlayGraphics.height / 2);
+  drawOverlayGraphics();
+}
+
+function drawOverlayGraphics() {
+  overlayGraphics.background(0); // 設定背景為黑色
+  for (let y = 0; y < overlayGraphics.height; y += 20) {
+    for (let x = 0; x < overlayGraphics.width; x += 20) {
+      // 從 capture 中取得對應位置的顏色
+      let col = capture.get(x, y);
+      overlayGraphics.fill(col);
+      overlayGraphics.noStroke();
+      overlayGraphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形，中心點偏移 10
+    }
+  }
 }
