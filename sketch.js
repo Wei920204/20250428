@@ -44,7 +44,8 @@ function drawOverlayGraphics() {
     for (let x = 0; x < overlayGraphics.width; x += 20) {
       // 從 capture 中取得對應位置的顏色
       let col = capture.get(x, y);
-      overlayGraphics.fill(col);
+      let gray = (red(col) + green(col) + blue(col)) / 3; // 計算灰階值
+      overlayGraphics.fill(gray); // 設定灰階顏色
       overlayGraphics.noStroke();
       overlayGraphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形，中心點偏移 10
     }
